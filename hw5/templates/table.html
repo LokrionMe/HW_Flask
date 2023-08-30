@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>
+        {% block title %}
+        Мой сайт
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in Tasks if not task.is_delete%}
+            <tr>
+                <th scope="row">{{ task.id }}</th>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>
+                    <p class="d-inline-flex gap-1">
+                        <a href="../tasks" class="btn btn-outline-secondary" role="button" data-bs-toggle="button">Change</a>
+                        <a href="#" class="btn btn-danger" role="button" data-bs-toggle="button">Delete</a>
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
